@@ -1,4 +1,4 @@
-const findShortestPath = require('../shortestPath');
+import findShortestPath from '../index'
 
 const graph = {
 	BTC: { RUB: 1 },

@@ -1,0 +1,27 @@
+{
+  "name": "aleksandra-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sargsyanvlad/aleksandra-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^25.2.3",
+    "nodemon": "^2.0.3"
+  },
+  "bugs": {
+    "url": "https://github.com/sargsyanvlad/aleksandra-task/issues"
+  },
+  "homepage": "https://github.com/sargsyanvlad/aleksandra-task#readme"
+}
