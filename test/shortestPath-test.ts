@@ -1,5 +1,8 @@
 import findShortestPath from '../index'
 
+console.log("findShortestPath", findShortestPath)
+import { expect } from "chai";
+
 const graph = {
 	BTC: { RUB: 1 },
 	RUB: { USD: 1, BTC: 1, ETH: 1 },

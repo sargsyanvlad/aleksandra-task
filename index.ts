@@ -1,12 +1,12 @@
 import {iGraph} from './types'
 
-const findShortest = (distances, visited) => {
+const findShortest = (distances, visited: Map<string, string>) => {
 	let shortest = null;
 
 	for (let node in distances) {
 		let isShortest =
 			shortest === null || distances[node] < distances[shortest];
-		if (isShortest && !visited.includes(node)) {
+		if (isShortest && !visited.has(node)) {
 			shortest = node;
 		}
 	}
@@ -31,7 +31,7 @@ const findExchangePath = (graph: iGraph, base: string, quote: string) => {
 	console.log("Parents =>", parents)
 
 	// Store already visited nodes in visited
-	let visited = [];
+	const visited = new Map()
 
 	// start find shortest outgoing way from StartNode
 	let node = findShortest(exchangePaths, visited);
@@ -44,9 +44,7 @@ const findExchangePath = (graph: iGraph, base: string, quote: string) => {
 		// for each of those child nodes
 		for (let child in children) {
 			// make sure each child node is not the start node
-			if (String(child) === String(base)) {
-				continue;
-			} else {
+			if (child !== base) {
 				// because of all edges have same weight, max distance will be max edges that we passed
 				// save the distance from the start node to the child node
 				let newDistance = distance + children[child];
@@ -62,7 +60,7 @@ const findExchangePath = (graph: iGraph, base: string, quote: string) => {
 			}
 		}
 		// move the node to the visited set
-		visited.push(node);
+		visited.set(node, node);
 		// when we find the nearest node then move it to the nearest neighbor node
 		node = findShortest(exchangePaths, visited);
 	}
@@ -84,4 +82,4 @@ const findExchangePath = (graph: iGraph, base: string, quote: string) => {
 	};
 };
 
-module.exports = findExchangePath;
+export default findExchangePath;
