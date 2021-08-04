@@ -1,22 +1,21 @@
 import findShortestPath from '../index'
 
-console.log("findShortestPath", findShortestPath)
 import { expect } from "chai";
 
-const graph = {
-	BTC: { RUB: 1 },
-	RUB: { USD: 1, BTC: 1, ETH: 1 },
-	ETH: { USD: 1 },
-	USD: { RUB: 1, ETH: 1, DOGE: 1 },
-	DOGE: { RUB: 1, USD: 1 },
-};
+describe(`Shortest path from 'ETH' to 'BTC'`, function() {
+  const graph = {
+    BTC: { RUB: 1 },
+    RUB: { USD: 1, BTC: 1, ETH: 1 },
+    ETH: { USD: 1 },
+    USD: { RUB: 1, ETH: 1, DOGE: 1 },
+    DOGE: { RUB: 1, USD: 1 },
+  };
 
-
-test(`shortest path from 'ETH' to 'BTC' should be 8 ['start', 'A', 'D', 'end']`, () => {
-  const shortestPath = findShortestPath(graph, 'ETH', 'BTC');
-  console.log("shortestPath", shortestPath)
-  expect(shortestPath).toEqual({
-    distance: 3,
-    path: [ 'ETH', 'USD', 'RUB', 'BTC' ],
+  it("It Should Success, should be 3 ['start', 'A', 'D', 'end']", function() {
+    const shortestPath = findShortestPath(graph, 'ETH', 'BTC');
+    expect(shortestPath).to.deep.equal({
+      distance: 3,
+      path: [ 'ETH', 'USD', 'RUB', 'BTC' ],
+    });
   });
-});
+})
